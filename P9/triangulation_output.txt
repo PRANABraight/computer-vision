@@ -1,0 +1,167 @@
+============================================================
+P9: TRIANGULATION / TWO-FRAME MOTION
+============================================================
+OpenCV Version: 4.10.0
+
+Error: Could not load 'left.jpeg' or 'right.jpeg'.
+Creating dummy images for demonstration...
+Left Image shape: (600, 800, 3)
+Right Image shape: (600, 800, 3)
+
+============================================================
+1. ORB FEATURE DETECTION
+============================================================
+ORB: Found 587 keypoints in left image
+ORB: Found 579 keypoints in right image
+ORB: Found 133 matches
+Saved: orb_matches.jpg
+
+----------------------------------------
+TRIANGULATION WITH ORB
+----------------------------------------
+
+Camera Matrix K:
+[[800.   0. 400.]
+ [  0. 800. 300.]
+ [  0.   0.   1.]]
+
+Essential Matrix E:
+[[ 0.13944966  0.68601194 -0.06498967]
+ [-0.65994847  0.11824102 -0.22016552]
+ [-0.05724359 -0.06637042 -0.00707906]]
+
+Inliers after RANSAC: 12 / 133
+
+Rotation Matrix R:
+[[-0.96210087  0.17582517 -0.20844047]
+ [-0.18599844 -0.98208899  0.03009638]
+ [-0.19941539  0.06772535  0.97757188]]
+
+Translation Vector t:
+[[-0.10693692  0.06347001 -0.9922379 ]]
+
+Points after pose recovery: 6
+
+--- 3D Coordinates of Matched Points (ORB) ---
+Point ID   X               Y               Z              
+-------------------------------------------------------
+0          -0.3723         0.1542          1.1421         
+1          -1.4364         0.8130          4.9969         
+2          -0.2852         0.1560          0.9795         
+3          -0.1873         0.2860          1.6054         
+4          -0.7645         0.4231          2.5939         
+5          -3.0723         2.1860          10.7795        
+Saved: 3d_coordinates_orb.csv
+
+============================================================
+2. SIFT FEATURE DETECTION
+============================================================
+SIFT: Found 359 keypoints in left image
+SIFT: Found 341 keypoints in right image
+SIFT: Found 69 good matches after ratio test
+Saved: sift_matches.jpg
+
+----------------------------------------
+TRIANGULATION WITH SIFT
+----------------------------------------
+
+Camera Matrix K:
+[[800.   0. 400.]
+ [  0. 800. 300.]
+ [  0.   0.   1.]]
+
+Essential Matrix E:
+[[ 6.36203837e-01 -1.98297648e-01  2.35392322e-01]
+ [-2.19429186e-01 -6.68729766e-01  2.35531507e-02]
+ [ 5.22430871e-04 -6.71940810e-02  9.71804090e-03]]
+
+Inliers after RANSAC: 24 / 69
+
+Rotation Matrix R:
+[[-0.31865127 -0.94566904  0.0645867 ]
+ [-0.92337444  0.2943032  -0.24650612]
+ [ 0.21410513 -0.13818719 -0.96698671]]
+
+Translation Vector t:
+[[-0.03203673 -0.0905161   0.99537957]]
+
+Points after pose recovery: 15
+
+--- 3D Coordinates of Matched Points (SIFT) ---
+Point ID   X               Y               Z              
+-------------------------------------------------------
+0          -0.2373         -0.0024         0.7012         
+1          -0.2373         -0.0024         0.7012         
+2          -0.3055         0.1305          0.9300         
+3          -0.3055         0.1305          0.9300         
+4          -0.3055         0.1305          0.9300         
+5          -0.3055         0.1305          0.9300         
+6          -0.3055         0.1305          0.9300         
+7          -0.3055         0.1305          0.9300         
+8          -0.3055         0.1305          0.9300         
+9          -0.0000         0.0000          0.0000         
+10         -0.0000         0.0000          0.0000         
+11         -0.0920         0.0601          0.2823         
+12         -0.0716         0.0533          0.2217         
+13         -0.0716         0.0533          0.2217         
+14         -0.0000         0.0000          0.0000         
+Saved: 3d_coordinates_sift.csv
+
+============================================================
+3. AKAZE FEATURE DETECTION (SURF Alternative)
+============================================================
+AKAZE: Found 179 keypoints in left image
+AKAZE: Found 169 keypoints in right image
+AKAZE: Found 52 matches
+Saved: akaze_matches.jpg
+
+----------------------------------------
+TRIANGULATION WITH AKAZE
+----------------------------------------
+
+Camera Matrix K:
+[[800.   0. 400.]
+ [  0. 800. 300.]
+ [  0.   0.   1.]]
+
+Essential Matrix E:
+[[-0.07906406 -0.67765368 -0.10544126]
+ [ 0.67980157 -0.07746295 -0.15072751]
+ [ 0.11281046  0.14083511  0.002511  ]]
+
+Inliers after RANSAC: 15 / 52
+
+Rotation Matrix R:
+[[ 0.99319699 -0.11639852  0.00333552]
+ [ 0.11633977  0.99310618  0.01432405]
+ [-0.00497982 -0.01383855  0.99989184]]
+
+Translation Vector t:
+[[-0.21640936  0.13528139 -0.96688465]]
+
+Points after pose recovery: 6
+
+--- 3D Coordinates of Matched Points (AKAZE) ---
+Point ID   X               Y               Z              
+-------------------------------------------------------
+0          0.4197          -0.6291         2.6891         
+1          0.4225          -0.6406         2.7261         
+2          0.4225          -0.6406         2.7261         
+3          -0.1930         -0.1544         2.0591         
+4          0.0061          0.0131          5.6653         
+5          0.2176          -0.0850         2.1073         
+Saved: 3d_coordinates_akaze.csv
+
+============================================================
+FEATURE DETECTOR COMPARISON SUMMARY
+============================================================
+Detector        Keypoints            Matches         3D Points      
+-----------------------------------------------------------------
+ORB             587 / 579            133             6              
+SIFT            359 / 341            69              15             
+AKAZE           179 / 169            52              6              
+
+Press any key to close all windows...
+
+Done!
+Output saved to: triangulation_output.txt
